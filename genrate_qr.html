@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital QR Generator</title>
+
+    <!-- QR Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #f9f9f9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 400px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #0d47a1;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px;
+            width: 100%;
+            font-size: 18px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0d47a1;
+        }
+
+        #qr {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .note {
+            font-size: 14px;
+            color: #555;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Gentrate Scan QR</h2>
+
+    <input type="text" id="url"
+     placeholder="Enter URL or Text">
+
+    <button onclick="genQR()">Generate QR Code</button>
+
+    <div id="qr"></div>
+
+    <div class="note">
+        Scan this QR to open  Guide
+    </div>
+</div>
+
+<script>
+function genQR(){
+    document.getElementById("qr").innerHTML = "";
+    new QRCode(document.getElementById("qr"), {
+        text: document.getElementById("url").value,
+        width: 200,
+        height: 200
+    });
+}
+</script>
+
+</body>
+</html>
